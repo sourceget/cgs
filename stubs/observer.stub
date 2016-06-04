@@ -1,0 +1,10 @@
+<?php
+
+namespace $MODULE_NAMESPACE$\$CLASS$\Observers;
+
+use Xincap\Core\Observers\ObserverImpl;
+
+class $CLASS$Observer extends ObserverImpl {
+
+}
+

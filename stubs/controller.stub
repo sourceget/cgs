@@ -1,0 +1,81 @@
+<?php
+
+namespace $MODULE_NAMESPACE$\$MODULE$\Http\Controllers;
+
+use Pingpong\Modules\Routing\Controller;
+use $MODULE_NAMESPACE$\$MODULE$\Repositories\$MODULE$Repository;
+use $MODULE_NAMESPACE$\$MODULE$\Http\Requests\$MODULE$Request;
+use $MODULE_NAMESPACE$\$MODULE$\Traits\$MODULE$Trait;
+use $MODULE_NAMESPACE$\$MODULE$\Http\Services\$MODULE$Service;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Session;
+use Request;
+
+class $CLASS$ extends Controller {
+    
+    use $MODULE$Trait;
+    
+    /**
+     *
+     * @var $MODULE$Repository
+     */
+    protected $respository;
+    
+    /**
+     *
+     * @var $MODULE$Service
+     */
+    protected $service;
+      
+    
+    function __construct() {
+        $this->respository  = app($MODULE$Repository::class);
+        $this->service      = app($MODULE$Service::class);
+    }
+    
+    public function index()
+    {
+        $items   = $this->respository->paginate();
+        return view('$VIEW$::index',['items'=>$items]);
+    }
+    
+    public function create(){
+        $id = Request::get('id');
+        $obj    = $this->respository->model();
+        $data   = ['title'=> '新增','obj'=>$obj,'type'=>'create'];
+        return view('$VIEW$::create', $data);
+    }
+    
+    public function edit(){
+        $id = Request::get('id');
+        try {
+            $obj    = $this->respository->query()->findOrFail($id);
+        } catch (ModelNotFoundException $exc) {
+            Session::flash('error', '未找到');
+            return redirect(route('$VIEW$.edit'));
+        }
+        $data   = ['title'=> '编辑','obj'=>$obj,'type'=>'edit'];
+        return view('$VIEW$::edit', $data);
+    }
+    
+    public function save($MODULE$Request $form){
+        $data       = $form->request->all();
+        $id         = $form->get('id',null);
+        if(!$id){
+            $ret   = $this->respository->create($data);
+            Session::flash('success', '新增成功');
+        }else{
+            $ret    = $this->respository->update($data, $id);
+            Session::flash('success', '更新成功');
+        }
+        return redirect(route('$VIEW$.edit').'?id='.$ret->id);
+    }
+    
+    public function delete(){
+        $id = Request::get('id');
+        $this->respository->delete($id);
+        Session::flash('success', '删除成功');
+        return redirect(route('$VIEW$.index'));
+    }
+}
+

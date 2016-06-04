@@ -1,0 +1,78 @@
+{
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=5.5.9",
+        "laravel/framework": "5.2.*",
+        "predis/predis": "1.0.*",
+        "barryvdh/laravel-ide-helper": "2.1.*",
+        "gregwar/captcha": "1.*",
+        "zizaco/entrust": "5.2.x-dev",
+        "bosnadev/repositories": "0.*",
+        "pingpong/modules": "~2.1",
+        "league/fractal": "0.13.*",
+        "codeguy/upload": "1.3.*",
+        "askedio/laravel5-soft-cascade": "1.*",
+        "rap2hpoutre/laravel-log-viewer": "0.6.*",
+        "mpociot/laravel-apidoc-generator": "1.2.*",
+        "evaengine/eva-oauth": "~1.0",
+        "orangehill/iseed": "2.*",
+        "chrisbjr/api-guard" : "3.1.*",
+        "itbdw/laravel-storage-qiniu": "1.0.*",
+        "socialiteproviders/weixin": "2.1.*",
+        "socialiteproviders/weixin-web": "2.0.*",
+        "socialiteproviders/qq": "2.0.*",
+        "socialiteproviders/weibo": "2.0.*",
+        "nategood/httpful": "*",
+        "znck/belongs-to-through": "2.2.*",
+        "sofa/eloquence": "5.2.*"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~4.0",
+        "symfony/css-selector": "2.8.*|3.0.*",
+        "symfony/dom-crawler": "2.8.*|3.0.*"
+    },
+    "autoload": {
+        "classmap": [
+            "database"
+        ],
+        "psr-4": {
+            "App\\" : "app/",
+            "Modules\\" : "modules/",
+            "DingTalk\\": "extesions/DingTalk/"
+        },
+        "files": [
+            "app/helper.php"
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "php -r \"copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ],
+        "post-install-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
+            "php artisan optimize"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan ide-helper:generate",
+            "php artisan optimize"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist"
+    }
+}

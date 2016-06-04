@@ -1,0 +1,20 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use $MODULE_NAMESPACE$\$MODULE$\Http\Requests\$CLASS$Request;
+
+class $CLASS$Service {
+    
+    /**
+     *
+     * @var $CLASS$Request 
+     */
+    protected $request;
+
+
+    public function __construct($CLASS$Request $request) {
+        $this->request  = $request;
+    }
+}
+
