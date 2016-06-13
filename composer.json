@@ -46,7 +46,8 @@
             "App\\" : "app/",
             "Modules\\" : "modules/",
             "DingTalk\\": "extesions/DingTalk/",
-            "Baidu\\Sdk\\": "extesions/Baidu/"
+            "Baidu\\Sdk\\": "extesions/Baidu/",
+            "SourceGet\\": "extesions/SourceGet/"
         },
         "files": [
             "app/helper.php"

@@ -23,6 +23,9 @@ class SupperRepository extends Repository {
             return $this->updateRich($data, $id);
         }
         $model  = $this->findBy($attribute, $id);
+        if(!$model){
+            throw new \Exception($this->model() .'(' .$id. ') Not Fond');
+        }
         return $model->fill($data)->save();
     }
     

@@ -24,7 +24,7 @@ return [
 
     'stubs' => [
         'enabled' => true,
-        'path' => base_path().'/stubs',
+        'path' => base_path().'/extesions/SourceGet/Generate/stubs',
         'files' => [
             'start' => 'start.php',
             'routes' => 'Http/routes.php',

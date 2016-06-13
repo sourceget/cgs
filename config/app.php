@@ -166,6 +166,7 @@ return [
         Orangehill\Iseed\IseedServiceProvider::class,
         Chrisbjr\ApiGuard\Providers\ApiGuardServiceProvider::class,
         itbdw\QiniuStorage\QiniuFilesystemServiceProvider::class,
+        SourceGet\Generate\Providers\SourceGetGenerateServiceProvider::class,
 
     ],
 

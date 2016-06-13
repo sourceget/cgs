@@ -8,7 +8,11 @@ app/storage/
 # Laravel 5 & Lumen specific
 bootstrap/cache/
 storage/
+storage/logs/*.log
+storage/framework/views/*.php
 .env.*.php
 .env.php
 .env.example
 /nbproject
+/composer.lock
+/_ide_helper.php
