@@ -21,6 +21,9 @@ class EventServiceProvider extends ServiceProvider {
         ],
         'eloquent.booting: Modules\Department\Entities\Department' => [
             \App\Listeners\DepartmentListener::class,
+        ],
+        \App\Events\TaoBaoEvent::class => [
+            \App\Listeners\TaoBaoListener::class,
         ]
     ];
 

@@ -20,3 +20,6 @@ Route::get('/', function () {
 Route::get('/log','\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/oauth/baidu', 'BaiduController@index');
+Route::get('/baidu/files', 'BaiduController@files');

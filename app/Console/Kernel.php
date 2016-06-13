@@ -20,7 +20,6 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\Modules\GenerateTraitCommand::class,
         \App\Console\Commands\Modules\GenerateServiceCommand::class,
         \App\Console\Commands\Modules\GenerateControllerCommand::class,
-        \App\Console\Commands\GenerateApiDocumentation::class,
     ];
 
     /**

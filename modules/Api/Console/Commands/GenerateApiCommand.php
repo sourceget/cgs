@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Modules\Api\Console\Commands;
 
-use Illuminate\Console\Command;
 use Mpociot\ApiDoc\Commands\GenerateDocumentation;
 
-class GenerateApiDocumentation extends GenerateDocumentation {
+class GenerateApiCommand extends GenerateDocumentation {
 
     /**
      * The name and signature of the console command.

@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Api\Providers;
+namespace Modules\Baidu\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class ApiServiceProvider extends ServiceProvider {
+class BaiduServiceProvider extends ServiceProvider {
 
     /**
      * Indicates if loading of the provider is deferred.
@@ -12,13 +12,11 @@ class ApiServiceProvider extends ServiceProvider {
      * @var bool
      */
     protected $defer = false;
-    
-    protected $namespace = 'Modules\\Api\\Console\\Commands\\';
-    
+    protected $namespace = 'Modules\\Baidu\\Console\\Commands\\';
     protected $commands = [
-        'GenerateApi',
+        'Taobao',
     ];
-        
+
     /**
      * Boot the application events.
      * 
@@ -37,7 +35,7 @@ class ApiServiceProvider extends ServiceProvider {
      */
     public function register() {
         foreach ($this->commands as $command) {
-            $this->commands($this->namespace.$command.'Command');
+            $this->commands($this->namespace . $command . 'Command');
         }
     }
 
@@ -48,10 +46,10 @@ class ApiServiceProvider extends ServiceProvider {
      */
     protected function registerConfig() {
         $this->publishes([
-            __DIR__ . '/../Config/config.php' => config_path('api.php'),
+            __DIR__ . '/../Config/config.php' => config_path('module_baidu.php'),
         ]);
         $this->mergeConfigFrom(
-                __DIR__ . '/../Config/config.php', 'api'
+                __DIR__ . '/../Config/config.php', 'baidu'
         );
     }
 
@@ -61,17 +59,17 @@ class ApiServiceProvider extends ServiceProvider {
      * @return void
      */
     public function registerViews() {
-        $viewPath = base_path('resources/views/modules/api');
+        $viewPath = base_path('resources/views/modules/baidu');
 
         $sourcePath = __DIR__ . '/../Resources/views';
 
-        $this->publishes([
-            $sourcePath => $viewPath
-        ]);
+//        $this->publishes([
+//            $sourcePath => $viewPath
+//        ]);
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
-                            return $path . '/modules/api';
-                        }, \Config::get('view.paths')), [$sourcePath]), 'api');
+                            return $path . '/modules/baidu';
+                        }, \Config::get('view.paths')), [$sourcePath]), 'baidu');
     }
 
     /**
@@ -80,12 +78,12 @@ class ApiServiceProvider extends ServiceProvider {
      * @return void
      */
     public function registerTranslations() {
-        $langPath = base_path('resources/lang/modules/api');
+        $langPath = base_path('resources/lang/modules/baidu');
 
         if (is_dir($langPath)) {
-            $this->loadTranslationsFrom($langPath, 'api');
+            $this->loadTranslationsFrom($langPath, 'baidu');
         } else {
-            $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'api');
+            $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'baidu');
         }
     }
 

@@ -28,7 +28,8 @@
         "socialiteproviders/weibo": "2.0.*",
         "nategood/httpful": "*",
         "znck/belongs-to-through": "2.2.*",
-        "sofa/eloquence": "5.2.*"
+        "sofa/eloquence": "5.2.*",
+        "jenssegers/agent": "2.3.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -44,7 +45,8 @@
         "psr-4": {
             "App\\" : "app/",
             "Modules\\" : "modules/",
-            "DingTalk\\": "extesions/DingTalk/"
+            "DingTalk\\": "extesions/DingTalk/",
+            "Baidu\\Sdk\\": "extesions/Baidu/"
         },
         "files": [
             "app/helper.php"

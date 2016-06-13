@@ -11,3 +11,4 @@ storage/
 .env.*.php
 .env.php
 .env.example
+/nbproject
