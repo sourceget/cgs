@@ -10,6 +10,7 @@ use Modules\Baidu\Http\Services\BaiduService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Session;
 use Request;
+use Modules\Baidu\Utils\Province;
 
 class BaiduController extends Controller {
     
@@ -55,6 +56,8 @@ class BaiduController extends Controller {
     
     public function index()
     {
+        $province   = new Province();
+        $province->proccess();
         $items   = $this->respository->paginate();
         return view('baidu::index',['items'=>$items]);
     }

@@ -15,6 +15,7 @@ class BaiduServiceProvider extends ServiceProvider {
     protected $namespace = 'Modules\\Baidu\\Console\\Commands\\';
     protected $commands = [
         'Taobao',
+        'OffDown',
     ];
 
     /**
