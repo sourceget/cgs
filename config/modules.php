@@ -108,7 +108,8 @@ return [
             'provider' => 'Providers',
             //'lang' => 'Resources/lang',
             'views' => 'Resources/views',
-            'trait'    => 'Traits'
+            'trait'    => 'Traits',
+            'utils'    => 'Utils'
             //'test' => 'Tests',
         ],
     ],

@@ -1,0 +1,10 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use $MODULE_NAMESPACE$\$MODULE$\Utils;
+
+class $CLASS$ {
+
+}
+

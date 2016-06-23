@@ -20,7 +20,8 @@ class SourceGetGenerateServiceProvider extends ServiceProvider {
         'Repository',
         'Request',
         'Service',
-        'Trait'
+        'Trait',
+        'Util'
     ];
 
     /**
