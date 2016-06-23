@@ -1,0 +1,271 @@
+Workflow:
+  connection: doctrine
+  tableName: ue_workflow
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    code:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false      
+    name:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    type_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    conditions:
+      type: string(255)
+  relations:
+    Type:
+      class: WorkflowType
+      local: type_id
+      foreign: id
+      type: one
+      foreignAlias: Workflows
+OrderExecution:
+  connection: doctrine
+  tableName: ue_order_execution
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    workflow_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    order_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    node_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    assignee_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    group_id:
+      type: integer(4)
+  relations:
+    Order:
+      local: order_id
+      foreign: id
+      type: one
+    Workflow:
+      local: workflow_id
+      foreign: id
+      type: one
+      foreignAlias: Executions
+    CurrentNode:
+      class: WorkflowNode
+      local: node_id
+      foreign: id
+      type: one
+    Assignee:
+      class: Organize
+      local: assignee_id
+      foreign: id
+      type: one
+    Group:
+      class: OrderExecutionGroup
+      local: group_id
+      foreign: id
+      type: one
+WorkflowNode:
+  connection: doctrine
+  tableName: ue_workflow_node
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    workflow_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    status_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    is_start:
+      type: boolean
+      default: false
+      notnull: false
+    is_end:
+      type: boolean
+      default: false
+      notnull: false 
+    pre_action:
+      type: text
+    triggers:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    conditions:
+      type: string(255)
+  relations:
+    Workflow:
+      local: workflow_id
+      foreign: id
+      type: one
+      foreignAlias: Nodes
+    OrderStatus:
+      local: status_id
+      foreign: id
+      type: one
+WorkflowNodeConnection:
+  connection: doctrine
+  tableName: ue_workflow_node_connection
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    node_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    next_node_id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    verifier:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    CurrentNode:
+      class: WorkflowNode
+      local: node_id
+      foreign: id
+      type: one
+      foreignAlias: Connections
+    NextNode:
+      class: WorkflowNode
+      local: next_node_id
+      foreign: id
+      type: one      
+WorkflowType:
+  connection: doctrine
+  tableName: ue_workflow_type
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    code:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false      
+    name:
+      type: string(50)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+OrderExecutionGroup:
+  connection: doctrine
+  tableName: ue_order_execution_group
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    name:
+      type: string(100)
+    organize_id:
+      type: integer(4)
+    warehouse_id:
+      type: integer(4)
+    mall_id:
+      type: integer(4)      
+    email:
+      type: string(100)
+  relations:
+    Organize:
+      class: Organize
+      foreignAlias: OrderExecutionGroups
+    Warehouse:
+      class: Warehouse
+      foreignAlias: OrderExecutionGroups
+    Mall:
+      class: Mall
+      foreignAlias: OrderExecutionGroups
+    Users:
+      foreignAlias: OrderExecutionGroups 
+      class: User
+      refClass: OrderExecutionGroupUser  
+
+OrderExecutionGroupUser:
+  connection: doctrine
+  tableName: ue_order_execution_group_user
+  columns:
+    user_id:
+      type: integer(4)    
+    order_execution_group_id: 
+      type: integer(4)     
+  relations: 
+    OrderExecutionGroup:
+      foreignAlias: OrderExecutionGroupUsers
+    User:
+      foreignAlias: OrderExecutionGroupUsers    
