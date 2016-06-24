@@ -39,5 +39,10 @@ class SupperRepository extends Repository {
     public function findOneBy($attribute, $value, $columns = ['*']){
         return $this->findBy($attribute, $value, $columns);
     }
+    
+    public function findWhereByOne($data,$columns=['*']){
+        $this->applyCriteria();
+        $this->model->where($data)->first($columns);
+    }
 
 }

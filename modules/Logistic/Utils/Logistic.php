@@ -2,9 +2,16 @@
 
 namespace Modules\Logistic\Utils;
 
-use Modules\Logistic\Utils;
-
-class Logistic {
-
+interface Logistic {
+    
+    public function getParamter();
+    
+    public function getServerApi();
+    
+    public function getRequestUrl();
+    
+    public function search($no, $name=null);
+    
+    
+    
 }
-

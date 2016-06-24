@@ -10,6 +10,7 @@ use Modules\Logistic\Http\Services\LogisticService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Session;
 use Request;
+use Modules\Logistic\Utils\CaiNiao;
 
 class LogisticController extends Controller {
     
@@ -35,6 +36,12 @@ class LogisticController extends Controller {
     
     public function index()
     {
+        $cn = new CaiNiao();
+        $no     = Request::get('no','580286014590');
+        $name   = null;
+        $ret    = $cn->search($no, $name);
+        print_r($ret);
+        exit;
         $items   = $this->respository->paginate();
         return view('logistic::index',['items'=>$items]);
     }
