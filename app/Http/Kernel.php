@@ -47,6 +47,10 @@ class Kernel extends HttpKernel
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
         ],
+        
+        'oauth' => [
+            
+        ]
     ];
 
     /**
