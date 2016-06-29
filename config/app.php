@@ -167,6 +167,8 @@ return [
         Chrisbjr\ApiGuard\Providers\ApiGuardServiceProvider::class,
         itbdw\QiniuStorage\QiniuFilesystemServiceProvider::class,
         SourceGet\Generate\Providers\SourceGetGenerateServiceProvider::class,
+        LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider::class,
+        LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class,
 
     ],
 
@@ -216,6 +218,7 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Module' => Pingpong\Modules\Facades\Module::class,
         'ApiGuardAuth' => \Chrisbjr\ApiGuard\Facades\ApiGuardAuth::class,
+        'Authorizer' => LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
     ],
 
 ];

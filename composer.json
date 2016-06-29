@@ -32,7 +32,9 @@
         "jenssegers/agent": "2.3.*",
         "lancewan/laravel5-cloud": "~1.1",
         "vitalibr/laravel5-exporter": "~3.0",
-        "lokielse/omnipay-unionpay": "~0.3"
+        "lokielse/omnipay-unionpay": "~0.3",
+        "toplan/laravel-sms": "2.4.*",
+        "lucadegasperi/oauth2-server-laravel": "5.1.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -50,6 +52,7 @@
             "Modules\\" : "modules/",
             "DingTalk\\": "extesions/DingTalk/",
             "Baidu\\Sdk\\": "extesions/Baidu/",
+            "SourceGet\\Plugin\\": "plugins/",
             "SourceGet\\": "extesions/SourceGet/"
         },
         "files": [
