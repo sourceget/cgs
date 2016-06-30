@@ -9,11 +9,14 @@ namespace App\Utils;
  */
 class Rsa {
 
-    public static function encrypt($content) {
+    public static function encrypt($content, $pubKey) {
         if(is_array($content)){
             $content    = json_encode($content,JSON_UNESCAPED_SLASHES);
         }
-        $pubKey = base_path('keys/rsa_public_key.pem');
+        if(!$pubKey){
+            $pubKey = base_path('keys/rsa_public_key.pem');
+        }
+        
         $publicKey = openssl_pkey_get_public(file_get_contents($pubKey));
         $encryptData = '';
         if (openssl_public_encrypt($content, $encryptData, $publicKey)) {

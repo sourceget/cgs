@@ -6,7 +6,7 @@ use Pingpong\Modules\Routing\Controller;
 use Request;
 use Authorizer;
 
-class Auth extends Controller {
+class AuthController extends Controller {
 
     function getAuthorize() {
 
@@ -26,10 +26,14 @@ class Auth extends Controller {
     public function postAuthorize() {
         
         $params = Authorizer::getAuthCodeRequestParams();
-        $params['user_id'] = Auth::guard('admin')->login([
+
+        $user    = Auth::guard('admin')->login([
             'email'     =>'chendehua@xin-group.com',
             'password'  => 123456
         ]);
+        
+        $params['user_id']  = $user->id;
+        
         $redirectUri = $params['redirect_uri'];
 
         // If the user has allowed the client to access its data, redirect back to the client with an auth code.
@@ -42,12 +46,15 @@ class Auth extends Controller {
             $redirectUri = Authorizer::authCodeRequestDeniedRedirectUri();
         }
 
-        dd($redirectUri);
         return Redirect::to($redirectUri);
     }
     
     public function postAccessToken(){
         return response()->json(Authorizer::issueAccessToken());
+    }
+    
+    public function getUser(){
+        dd(222);
     }
 
 }

@@ -30,7 +30,6 @@
         "znck/belongs-to-through": "2.2.*",
         "sofa/eloquence": "5.2.*",
         "jenssegers/agent": "2.3.*",
-        "lancewan/laravel5-cloud": "~1.1",
         "vitalibr/laravel5-exporter": "~3.0",
         "lokielse/omnipay-unionpay": "~0.3",
         "toplan/laravel-sms": "2.4.*",

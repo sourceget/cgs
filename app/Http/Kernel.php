@@ -50,6 +50,10 @@ class Kernel extends HttpKernel
         
         'oauth' => [
             
+        ],
+        
+        'oauth_api' => [
+            \Modules\V1\Middleware\Oauth::class
         ]
     ];
 
