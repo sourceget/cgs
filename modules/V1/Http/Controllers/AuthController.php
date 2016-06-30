@@ -54,7 +54,7 @@ class AuthController extends Controller {
     }
     
     public function getUser(){
-        dd(222);
+        dd(Request::getClientIp());
     }
 
 }
